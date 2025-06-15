@@ -38,7 +38,7 @@ int main()
 		Status_Register_1_decoder(motor_read_register(&slate.motors[i], SR1));
 		Status_Register_2_decoder(motor_read_register(&slate.motors[i], SR2));
 		Control_Register_1_decoder(motor_read_register(&slate.motors[i], CR1));
-		Control_Register_2_decoder(motor_read_register(&slate.motors[i], CR2A));
+		Control_Register_2A_decoder(motor_read_register(&slate.motors[i], CR2A));
 		Control_Register_3_decoder(motor_read_register(&slate.motors[i], CR3));
 		Control_Register_4_decoder(motor_read_register(&slate.motors[i], CR4));
 		Control_Register_5_decoder(motor_read_register(&slate.motors[i], CR5));

@@ -52,7 +52,7 @@ void IC_Status_Register_decoder(uint8_t reg);
 void Status_Register_1_decoder(uint8_t reg);
 void Status_Register_2_decoder(uint8_t reg);
 void Control_Register_1_decoder(uint8_t reg);
-void Control_Register_2_decoder(uint8_t reg);
+void Control_Register_2A_decoder(uint8_t reg);
 void Control_Register_3_decoder(uint8_t reg);
 void Control_Register_4_decoder(uint8_t reg);
 void Control_Register_5_decoder(uint8_t reg);
