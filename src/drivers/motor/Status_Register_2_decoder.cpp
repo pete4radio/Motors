@@ -27,7 +27,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-void interpretStatusRegister(unsigned char byte) {
+void Status_Register_2_decoder(unsigned char byte) {
     // Define the bit field descriptions
     const char *fields[] = {
         "SPI_ADDR_FLT", "SPI_SCLK_FLT", "SPI_PARITY", "VCP_UV", 
