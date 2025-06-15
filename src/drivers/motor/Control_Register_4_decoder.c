@@ -23,6 +23,9 @@
                     3h = Overcurrent is not reported and no action is taken
  */
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include "drivers/motor/motor.h"
 
 void Control_Register_4_decoder(unsigned char byte) {
     // Define the bit field descriptions

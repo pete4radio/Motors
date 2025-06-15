@@ -26,6 +26,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "drivers/motor/motor.h"
 
 void Control_Register_5_decoder(unsigned char byte) {
     // Define the bit field descriptions
@@ -51,10 +52,4 @@ void Control_Register_5_decoder(unsigned char byte) {
     printf("Bit 3: %s - %s\n", fields[4], descriptions[2][(byte >> 3) & 0x01]); // EN_AAR
     printf("Bit 2: %s - %s\n", fields[5], descriptions[3][(byte >> 2) & 0x01]); // EN_ASR
     printf("Bits 1-0: %s - %s\n", fields[6], descriptions[4][byte & 0x03]); // CSA_GAIN
-}
-
-int main() {
-    unsigned char byte = 0b10101010; // Example byte
-    Control_Register_5_decoder(byte);
-    return 0;
 }

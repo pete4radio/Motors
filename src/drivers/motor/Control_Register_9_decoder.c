@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "drivers/motor/motor.h"
 
 void Control_Register_9_decoder(unsigned char byte) {
     // Define the bit field descriptions
@@ -37,10 +38,4 @@ void Control_Register_9_decoder(unsigned char byte) {
     // Interpret ADVANCE_LVL bits (2-0)
     unsigned char advanceLvlValue = byte & 0x07; // Extract bits 2-0
     printf("Bits 2-0: %s - %s\n", fields[4], descriptions[1][advanceLvlValue]);
-}
-
-int main() {
-    unsigned char byte = 0b10101010; // Example byte
-    Control_Register_9_decoder(byte);
-    return 0;
 }

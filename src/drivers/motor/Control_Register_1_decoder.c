@@ -13,8 +13,9 @@
                     7h = No effect unless locked or unlocked */
 
 #include <stdio.h>
-
-#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include "drivers/motor/motor.h"
 
 void Control_Register_1_decoder(unsigned char byte) {
     // Define the bit field descriptions

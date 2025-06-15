@@ -24,6 +24,9 @@
                             1h = Over temperature reporting on nFAULT is enabled */
 
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include "motor.h"
 
 void Control_Register_3_decoder(unsigned char byte) {
     // Define the bit field descriptions

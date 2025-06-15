@@ -26,6 +26,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "motor.h"
 
 
 void Control_Register_2A_decoder(unsigned char byte) {

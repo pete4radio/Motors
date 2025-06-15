@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "drivers/motor/motor.h"
 
 void Control_Register_7_decoder(unsigned char byte) {
     // Define the bit field descriptions
@@ -45,10 +46,4 @@ void Control_Register_7_decoder(unsigned char byte) {
     printf("Bit 2: %s - %s\n", fields[5], descriptions[3][(byte >> 2) & 0x01]); // COAST
     printf("Bit 1: %s - %s\n", fields[6], descriptions[4][(byte >> 1) & 0x01]); // BRAKE
     printf("Bit 0: %s - %s\n", fields[7], descriptions[5][byte & 0x01]); // DIR
-}
-
-int main() {
-    unsigned char byte = 0b10101010; // Example byte
-    Control_Register_7_decoder(byte);
-    return 0;
 }

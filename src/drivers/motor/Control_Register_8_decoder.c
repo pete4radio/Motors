@@ -24,6 +24,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "drivers/motor/motor.h"
 
 void Control_Register_8_decoder(unsigned char byte) {
     // Define the bit field descriptions
@@ -49,10 +50,4 @@ void Control_Register_8_decoder(unsigned char byte) {
     printf("Bit 4: %s - %s\n", fields[5], descriptions[2][(byte >> 4) & 0x01]); // MTR_LOCK_RETRY
     printf("Bits 3-2: %s - %s\n", fields[6], descriptions[3][(byte >> 2) & 0x03]); // MTR_LOCK_TDET
     printf("Bits 1-0: %s - %s\n", fields[7], descriptions[4][byte & 0x03]); // MTR_LOCK_MODE
-}
-
-int main() {
-    unsigned char byte = 0b10101010; // Example byte
-    Control_Register_8_decoder(byte);
-    return 0;
 }

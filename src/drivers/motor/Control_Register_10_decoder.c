@@ -27,6 +27,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "drivers/motor/motor.h"
 
 void Control_Register_10_decoder(unsigned char byte) {
     // Define the bit field descriptions
@@ -53,10 +54,4 @@ void Control_Register_10_decoder(unsigned char byte) {
     // Interpret DLY_TARGET bits (3-0)
     unsigned char dlyTargetValue = byte & 0x0F; // Extract bits 3-0
     printf("Bits 3-0: %s - %s\n", fields[4], descriptions[2][dlyTargetValue]);
-}
-
-int main() {
-    unsigned char byte = 0b10101010; // Example byte
-    Control_Register_10_decoder(byte);
-    return 0;
 }

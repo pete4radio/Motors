@@ -22,6 +22,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "drivers/motor/motor.h"
 
 
 void Control_Register_6_decoder(unsigned char byte) {
@@ -47,10 +48,4 @@ void Control_Register_6_decoder(unsigned char byte) {
     printf("Bit 3: %s - %s\n", fields[3], descriptions[2][(byte >> 3) & 0x01]); // BUCK_CL
     printf("Bits 2-1: %s - %s\n", fields[4], descriptions[3][(byte >> 1) & 0x03]); // BUCK_SEL
     printf("Bit 0: %s - %s\n", fields[7], descriptions[4][byte & 0x01]); // BUCK_DIS
-}
-
-int main() {
-    unsigned char byte = 0b10101010; // Example byte
-    Control_Register_6_decoder(byte);
-    return 0;
 }
