@@ -40,7 +40,7 @@ void Control_Register_6_decoder(unsigned char byte) {
         {"Buck regulator is enabled", "Buck regulator is disabled"} // BUCK_DIS (0)
     };
 
-    printf("------------------Control Register 6 Decoder:\n");
+    printf("------------------Control Register 6 Decoder: 0x%02X\n", byte);
     // Interpret each bit or group of bits
     printf("Bits 7-6: %s - %s\n", fields[0], descriptions[0][(byte >> 6) & 0x03]); // RESERVED
     printf("Bit 5: %s - %s\n", fields[1], descriptions[0][(byte >> 5) & 0x01]); // RESERVED

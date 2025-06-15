@@ -38,7 +38,7 @@ void Control_Register_7_decoder(unsigned char byte) {
         {"Motor direction is set to clockwise direction", "Motor direction is set to anti-clockwise direction"} // DIR (0)
     };
 
-    printf("------------------Control Register 7 Decoder:\n");
+    printf("------------------Control Register 7 Decoder: 0x%02X\n", byte);
     // Interpret each bit or group of bits
     printf("Bits 7-5: %s - %s\n", fields[0], descriptions[0][(byte >> 5) & 0x07]); // RESERVED
     printf("Bit 4: %s - %s\n", fields[3], descriptions[1][(byte >> 4) & 0x01]); // HALL_HYS

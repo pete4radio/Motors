@@ -43,7 +43,7 @@ void Control_Register_8_decoder(unsigned char byte) {
          "Motor lock is report only but no action is taken", "Motor lock is not reported and no action is taken"} // MTR_LOCK_MODE (1-0)
     };
 
-    printf("------------------Control Register 8 Decoder:\n");
+    printf("------------------Control Register 8 Decoder: 0x%02X\n", byte);
     // Interpret each bit or group of bits
     printf("Bits 7-6: %s - %s\n", fields[0], descriptions[0][(byte >> 6) & 0x03]); // FGOUT_SEL
     printf("Bit 5: %s - %s\n", fields[4], descriptions[1][(byte >> 5) & 0x01]); // RESERVED

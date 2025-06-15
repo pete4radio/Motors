@@ -43,7 +43,7 @@ void Control_Register_5_decoder(unsigned char byte) {
         {"CSA gain is 0.15 V/A", "CSA gain is 0.3 V/A", "CSA gain is 0.6 V/A", "CSA gain is 1.2 V/A"} // CSA_GAIN (1-0)
     };
 
-    printf("------------------Control Register 5 Decoder:\n");
+    printf("------------------Control Register 5 Decoder: 0x%02X\n", byte);
     // Interpret each bit or group of bits
     printf("Bit 7: %s - %s\n", fields[0], descriptions[0][(byte >> 7) & 0x01]); // RESERVED
     printf("Bit 6: %s - %s\n", fields[1], descriptions[1][(byte >> 6) & 0x01]); // ILIM_RECIR

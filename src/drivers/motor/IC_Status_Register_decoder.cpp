@@ -50,7 +50,7 @@ void IC_Status_Register_decoder(unsigned char byte) {
         {"No motor lock is detected", "Motor lock is detected"}
     };
 
-        printf("------------------IC_Status_Register 1 Decoder:\n");
+        printf("------------------IC_Status_Register 1 Decoder: 0x%02X\n", byte);
     // Iterate through each bit in the byte
     for (int i = 0; i < 8; i++) {
         int bitValue = (byte >> i) & 1; // Extract the value of the bit

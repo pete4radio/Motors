@@ -27,7 +27,7 @@ int main()
 	//motor_enable(&slate.motors[m]);
 	
 	printf("Sleeping!\n");
-	sleep_ms(1000);
+	sleep_ms(10000);
 
 	//motor_set_speed(&slate.motors[3], 1<<12);
 
@@ -49,7 +49,7 @@ int main()
 		Control_Register_10_decoder(motor_read_register(&slate.motors[i], CR10));
 		printf("\n");
 	}
-
+	sleep_ms(10000);
 #ifdef TEST
     while (1)
     {

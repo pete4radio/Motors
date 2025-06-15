@@ -42,7 +42,7 @@ void Control_Register_10_decoder(unsigned char byte) {
         {"0 us", "0.4 us", "0.6 us", "0.8 us", "1 us", "1.2 us", "1.4 us", "1.6 us", "1.8 us", "2 us", "2.2 us", "2.4 us", "2.6 us", "2.8 us", "3 us", "3.2 us"} // DLY_TARGET (3-0)
     };
 
-    printf("------------------Control Register 10 Decoder:\n");
+    printf("------------------Control Register 10 Decoder: 0x%02X\n", byte);
     // Interpret RESERVED bits (7-5)
     unsigned char reservedValue = (byte >> 5) & 0x07; // Extract bits 7-5
     printf("Bits 7-5: %s - %s\n", fields[0], descriptions[0][reservedValue]);

@@ -33,7 +33,7 @@ void Control_Register_1_decoder(unsigned char byte) {
          "No effect unless locked or unlocked"}
     };
 
-    printf("------------------Control Register 1 Decoder:\n");
+    printf("------------------Control Register 1 Decoder: 0x%02X\n", byte);
     // Interpret RESERVED bits (7-3)
     printf("Bits 7-3: %s - %s\n", fields[0], descriptions[0][0]);
 

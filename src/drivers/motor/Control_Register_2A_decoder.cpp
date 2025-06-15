@@ -45,7 +45,7 @@ void Control_Register_2A_decoder(unsigned char byte) {
         {"No clear fault command is issued", "To clear the latched fault bits"} // CLR_FLT (0)
     };
 
-    printf("------------------Control Register 2A Decoder:\n");
+    printf("------------------Control Register 2A Decoder: 0x%02X\n", byte);
     // Interpret RESERVED bits (7-6)
     unsigned char reservedValue = (byte >> 6) & 0x03; // Extract bits 7-6
     printf("Bits 7-6: %s - %s\n", fields[0], descriptions[0][reservedValue]);
