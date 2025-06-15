@@ -46,18 +46,17 @@ void motor_reset_fault(motor_t* motor);
 uint8_t motor_read_register(motor_t* motor, uint8_t reg_addr);
 uint8_t motor_write_register(motor_t* motor, uint8_t reg_addr, uint8_t data);
 
-
 //decoders for registers in the MCT8316ZR
-void IC_Status_Register_decoder(uint8_t reg);
-void Status_Register_1_decoder(uint8_t reg);
-void Status_Register_2_decoder(uint8_t reg);
-void Control_Register_1_decoder(uint8_t reg);
-void Control_Register_2_decoder(uint8_t reg);
-void Control_Register_3_decoder(uint8_t reg);
-void Control_Register_4_decoder(uint8_t reg);
-void Control_Register_5_decoder(uint8_t reg);
-void Control_Register_6_decoder(uint8_t reg);
-void Control_Register_7_decoder(uint8_t reg);
-void Control_Register_8_decoder(uint8_t reg);
-void Control_Register_9_decoder(uint8_t reg);
-void Control_Register_10_decoder(uint8_t reg);
+void IC_Status_Register_decoder(uint8_t);
+void Status_Register_1_decoder(uint8_t);
+void Status_Register_2_decoder(uint8_t);
+void Control_Register_1_decoder(uint8_t);
+void Control_Register_2_decoder(uint8_t);
+void Control_Register_3_decoder(uint8_t);
+void Control_Register_4_decoder(uint8_t);
+void Control_Register_5_decoder(uint8_t);
+void Control_Register_6_decoder(uint8_t);
+void Control_Register_7_decoder(uint8_t);
+void Control_Register_8_decoder(uint8_t);
+void Control_Register_9_decoder(uint8_t);
+void Control_Register_10_decoder(uint8_t);

@@ -16,6 +16,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "drivers/motor/motor.h"
+#include <stdint.h>
 
 void Control_Register_1_decoder(unsigned char byte) {
     // Define the bit field descriptions
