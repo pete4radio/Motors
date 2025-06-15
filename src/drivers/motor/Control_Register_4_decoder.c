@@ -48,9 +48,3 @@ void Control_Register_4_decoder(unsigned char byte) {
     printf("Bit 2: %s - %s\n", fields[5], descriptions[4][(byte >> 2) & 0x01]); // OCP_LVL
     printf("Bits 1-0: %s - %s\n", fields[6], descriptions[5][byte & 0x03]); // OCP_MODE
 }
-
-int main() {
-    unsigned char byte = 0b10101010; // Example byte
-    interpretStatusRegister(byte);
-    return 0;
-}
