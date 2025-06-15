@@ -29,9 +29,11 @@
                    0h = No fault condition is detected
                    1h = Fault condition is detected */
 
-                   #include <stdio.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-void interpretByte(unsigned char byte) {
+void IC_Status_Register_decoder(unsigned char byte) {
     // Define the bit field descriptions
     const char *fields[] = {
         "FAULT", "OT", "OVP", "NPOR", "OCP", "SPI_FLT", "BK_FLT", "MTR_LOCK"
@@ -48,6 +50,7 @@ void interpretByte(unsigned char byte) {
         {"No motor lock is detected", "Motor lock is detected"}
     };
 
+        printf("------------------IC_Status_Register 1 Decoder:\n");
     // Iterate through each bit in the byte
     for (int i = 0; i < 8; i++) {
         int bitValue = (byte >> i) & 1; // Extract the value of the bit

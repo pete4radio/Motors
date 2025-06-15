@@ -29,6 +29,8 @@
                     1h = Overcurrent detected on low-side switch of OUTA */
 
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 void Status_Register_1_decoder(unsigned char byte) {
     // Define the bit field descriptions
@@ -46,16 +48,10 @@ void Status_Register_1_decoder(unsigned char byte) {
         {"No overtemperature shutdown is detected", "Overtemperature shutdown is detected"},
         {"No overtemperature warning is detected", "Overtemperature warning is detected"}
     };
-
+    printf("------------------Status Register 1 Decoder:\n");
     // Iterate through each bit in the byte
     for (int i = 0; i < 8; i++) {
         int bitValue = (byte >> i) & 1; // Extract the value of the bit
         printf("Bit %d: %s - %s\n", i, fields[i], descriptions[i][bitValue]);
     }
-}
-
-int main() {
-    unsigned char byte = 0b10101010; // Example byte
-    interpretStatusRegister1(byte);
-    return 0;
 }

@@ -1,3 +1,4 @@
+// Control Register 2A Decoder
 /*     Bit Field     Type Reset Description
     7-6 RESERVED  R/W  2h    Reserved
                     0h = Reserved
@@ -23,8 +24,11 @@
 
  */
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-void interpretRegister(unsigned char byte) {
+
+void Control_Register_2A_decoder(unsigned char byte) {
     // Define the bit field descriptions
     const char *fields[] = {
         "RESERVED", "RESERVED", "SDO_MODE", "SLEW", "SLEW", "PWM_MODE", "PWM_MODE", "CLR_FLT"
@@ -39,6 +43,7 @@ void interpretRegister(unsigned char byte) {
         {"No clear fault command is issued", "To clear the latched fault bits"} // CLR_FLT (0)
     };
 
+    printf("------------------Control Register 2A Decoder:\n");
     // Interpret RESERVED bits (7-6)
     unsigned char reservedValue = (byte >> 6) & 0x03; // Extract bits 7-6
     printf("Bits 7-6: %s - %s\n", fields[0], descriptions[0][reservedValue]);
@@ -58,10 +63,4 @@ void interpretRegister(unsigned char byte) {
     // Interpret CLR_FLT bit (0)
     unsigned char clrFltValue = byte & 0x01; // Extract bit 0
     printf("Bit 0: %s - %s\n", fields[7], descriptions[4][clrFltValue]);
-}
-
-int main() {
-    unsigned char byte = 0b10101010; // Example byte
-    interpretRegister(byte);
-    return 0;
 }

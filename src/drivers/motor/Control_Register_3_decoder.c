@@ -24,9 +24,8 @@
                             1h = Over temperature reporting on nFAULT is enabled */
 
 #include <stdio.h>
-#include <stdio.h>
 
-void interpretStatusRegister3(unsigned char byte) {
+void Control_Register_3_decoder(unsigned char byte) {
     // Define the bit field descriptions
     const char *fields[] = {
         "RESERVED", "RESERVED", "RESERVED", "PWM_100_DUTY_SEL", 
@@ -41,6 +40,7 @@ void interpretStatusRegister3(unsigned char byte) {
         {"Over temperature reporting on nFAULT is disabled", "Over temperature reporting on nFAULT is enabled"} // OTW_REP (0)
     };
 
+        printf("------------------Control Register 3 Decoder:\n");
     // Interpret each bit
     for (int i = 7; i >= 0; i--) {
         int bitValue = (byte >> i) & 1; // Extract the value of the bit
@@ -56,10 +56,4 @@ void interpretStatusRegister3(unsigned char byte) {
             printf("Bit %d: %s - %s\n", i, fields[i], descriptions[4][bitValue]);
         }
     }
-}
-
-int main() {
-    unsigned char byte = 0b10101010; // Example byte
-    interpretStatusRegister3(byte);
-    return 0;
 }

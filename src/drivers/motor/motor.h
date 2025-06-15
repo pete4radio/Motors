@@ -14,6 +14,23 @@ typedef struct {
 	int set_speed_;
 } motor_t;
 
+// Control Register (CRn) offsets
+#define CR1 0x03 // Control Register 1, locks
+#define CR2A 0x04 // Control Register 2A, SDO push-pull REQUIRED, clear fault
+#define CR3 0x05 // Control Register 3, PWM frequency, Overvoltage setting, defaults ok
+#define CR4 0x06 // Control Register 4, Enable REQUIRED, current limit
+#define CR5 0x07 // Control Register 5, Brake/Coast, async rectification, current sense amplifier gain
+#define CR6 0x08 // Control Register 6, Buck voltage and current settings
+#define CR7 0x09 // Control Register 7, Brake, coast and direction
+#define CR8 0x0A // Control Register 8, Motor lock retry, detection and fault
+#define CR9 0x0B // Control Register 9, Phase Advance
+#define CR10 0x0C // Control Register 10, Driver delay compensation
+
+// Status Register (SRn) offsets
+#define SR1 0x01 // Status Register 1, latched faults
+#define SR2 0x02 // Status Register 2, buck regulator faults
+#define ICR 0x00 // IC Status Register, real-time faults
+
 motor_t motor_init(int FAULT_pin, 
 					int SLEEP_pin, 
 					int DRVOFF_pin,

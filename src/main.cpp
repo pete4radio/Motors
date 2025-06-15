@@ -30,6 +30,23 @@ int main()
 	sleep_ms(1000);
 
 	//motor_set_speed(&slate.motors[3], 1<<12);
+
+	// Decode the status registers
+	for (int i = 0; i < 4; i++) {
+		printf("Motor %d Registers:\n", i);
+		IC_Status_Register_decoder(motor_read_register(&slate.motors[i], 0x0));
+		Status_Register_1_decoder(motor_read_register(&slate.motors[i], 0x1));
+		Status_Register_2_decoder(motor_read_register(&slate.motors[i], 0x2));
+		Control_Register_1_decoder(motor_read_register(&slate.motors[i], 0x3));
+		Control_Register_2_decoder(motor_read_register(&slate.motors[i], 0x4));
+
+
+	}
+	IC_Status_Register_decoder(motor_read_register(&slate.motors[1], 0x0));
+	IC_Status_Register_decoder(motor_read_register(&slate.motors[2], 0x0));
+	IC_Status_Register_decoder(motor_read_register(&slate.motors[3], 0x0));
+	IC_Status_Register_decoder(motor_read_register(&slate.motors[0], 0x0));
+	Control_Register_1_decoder(motor_read_register(&slate.motors[1], 0x1));
 #ifdef TEST
     while (1)
     {

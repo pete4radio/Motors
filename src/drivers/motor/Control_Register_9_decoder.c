@@ -14,6 +14,8 @@
 */ 
 
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 void Control_Register_9_decoder(unsigned char byte) {
     // Define the bit field descriptions
@@ -27,6 +29,7 @@ void Control_Register_9_decoder(unsigned char byte) {
         {"0°", "4°", "7°", "11°", "15°", "20°", "25°", "30°"} // ADVANCE_LVL (2-0)
     };
 
+    printf("------------------Control Register 9 Decoder:\n");
     // Interpret RESERVED bits (7-3)
     unsigned char reservedValue = (byte >> 3) & 0x1F; // Extract bits 7-3
     printf("Bits 7-3: %s - %s\n", fields[0], descriptions[0][reservedValue]);

@@ -16,7 +16,7 @@
 
 #include <stdio.h>
 
-void interpretControlRegister1(unsigned char byte) {
+void Control_Register_1_decoder(unsigned char byte) {
     // Define the bit field descriptions
     const char *fields[] = {
         "RESERVED", "RESERVED", "RESERVED", "RESERVED", "REG_LOCK", "REG_LOCK", "REG_LOCK", "REG_LOCK"
@@ -31,6 +31,7 @@ void interpretControlRegister1(unsigned char byte) {
          "No effect unless locked or unlocked"}
     };
 
+    printf("------------------Control Register 1 Decoder:\n");
     // Interpret RESERVED bits (7-3)
     printf("Bits 7-3: %s - %s\n", fields[0], descriptions[0][0]);
 

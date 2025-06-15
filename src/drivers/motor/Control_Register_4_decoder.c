@@ -24,7 +24,7 @@
  */
 #include <stdio.h>
 
-void Status_Register_4_decoder(unsigned char byte) {
+void Control_Register_4_decoder(unsigned char byte) {
     // Define the bit field descriptions
     const char *fields[] = {
         "DRV_OFF", "OCP_CBC", "OCP_DEG", "OCP_DEG", "OCP_RETRY", "OCP_LVL", "OCP_MODE", "OCP_MODE"
@@ -39,6 +39,7 @@ void Status_Register_4_decoder(unsigned char byte) {
         {"Overcurrent causes a latched fault", "Overcurrent causes an automatic retrying fault", "Overcurrent is report only but no action is taken", "Overcurrent is not reported and no action is taken"} // OCP_MODE (1-0)
     };
 
+    printf("------------------Control Register 4 Decoder:\n");
     // Interpret each bit or group of bits
     printf("Bit 7: %s - %s\n", fields[0], descriptions[0][(byte >> 7) & 0x01]); // DRV_OFF
     printf("Bit 6: %s - %s\n", fields[1], descriptions[1][(byte >> 6) & 0x01]); // OCP_CBC

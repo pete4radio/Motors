@@ -24,7 +24,8 @@
                     0h = No SPI address fault is detected (due to accessing non-user register)
                     1h = SPI address fault is detected */
 #include <stdio.h>
-#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 void interpretStatusRegister(unsigned char byte) {
     // Define the bit field descriptions
@@ -44,15 +45,10 @@ void interpretStatusRegister(unsigned char byte) {
         {"Reserved", "Reserved"}
     };
 
+    printf("------------------Status Register 2 Decoder:\n");
     // Iterate through each bit in the byte
     for (int i = 0; i < 8; i++) {
         int bitValue = (byte >> i) & 1; // Extract the value of the bit
         printf("Bit %d: %s - %s\n", i, fields[i], descriptions[i][bitValue]);
     }
-}
-
-int main() {
-    unsigned char byte = 0b10101010; // Example byte
-    interpretStatusRegister(byte);
-    return 0;
 }

@@ -20,10 +20,10 @@ set(toolchainVersion 14_2_Rel1)
 set(picotoolVersion 2.1.1)
 include(${USERHOME}/.pico-sdk/cmake/pico-vscode.cmake)
 # ====================================================================================
-set(PICO_BOARD Pico2 CACHE STRING "Board type")
+set(PICO_BOARD MOTOR CACHE STRING "Board type")
 set(RP2350A)
 set(RP2350B 1)
-#set(PICO_PLATFORM "rp2350" CACHE STRING "Platform type")
+set(PICO_PLATFORM "rp2350" CACHE STRING "Platform type")
 include(pico_sdk_import.cmake)
 
 project(samwise-adcs-motor C CXX ASM)
