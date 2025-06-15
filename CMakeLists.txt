@@ -35,7 +35,7 @@ file(GLOB top CONFIGURE_DEPENDS "src/*.cpp")
 file(GLOB adm1176 CONFIGURE_DEPENDS "src/drivers/adm1176/*.cpp")
 file(GLOB init CONFIGURE_DEPENDS "src/init/*.cpp")
 file(GLOB watchdog CONFIGURE_DEPENDS "src/drivers/watchdog/*.cpp")
-file(GLOB motor CONFIGURE_DEPENDS "src/drivers/motor/*.cpp")
+file(GLOB motor CONFIGURE_DEPENDS "src/drivers/motor/*.cpp" "src/drivers/motor/*.c")
 
 add_executable(samwise-adcs-motor ${top} ${adm1176} ${init} ${watchdog} ${motor})
 

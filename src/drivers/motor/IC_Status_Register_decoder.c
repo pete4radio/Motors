@@ -1,7 +1,6 @@
 // Prints the status of the motor controller IC based on the status register value
 #include <stdio.h>
 #include <stdint.h>
-#include "IC_Status_Register_decoder.h"
 // IC_Status_Register_decoder.c
 /* Bit Field     Type Reset Description
 7   MTR_LOCK  R    0h    Motor Lock Status Bit

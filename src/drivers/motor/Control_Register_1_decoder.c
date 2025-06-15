@@ -39,9 +39,3 @@ void Control_Register_1_decoder(unsigned char byte) {
     unsigned char regLockValue = byte & 0x07; // Extract bits 2-0
     printf("Bits 2-0: %s - %s\n", fields[4], descriptions[1][regLockValue]);
 }
-
-int main() {
-    unsigned char byte = 0b00000110; // Example byte
-    interpretControlRegister1(byte);
-    return 0;
-}
