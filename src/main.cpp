@@ -34,19 +34,22 @@ int main()
 	// Decode the status registers
 	for (int i = 0; i < 4; i++) {
 		printf("Motor %d Registers:\n", i);
-		IC_Status_Register_decoder(motor_read_register(&slate.motors[i], 0x0));
-		Status_Register_1_decoder(motor_read_register(&slate.motors[i], 0x1));
-		Status_Register_2_decoder(motor_read_register(&slate.motors[i], 0x2));
-		Control_Register_1_decoder(motor_read_register(&slate.motors[i], 0x3));
-		Control_Register_2_decoder(motor_read_register(&slate.motors[i], 0x4));
-
-
+		IC_Status_Register_decoder(motor_read_register(&slate.motors[i], ICR));
+		Status_Register_1_decoder(motor_read_register(&slate.motors[i], SR1));
+		Status_Register_2_decoder(motor_read_register(&slate.motors[i], SR2));
+		Control_Register_1_decoder(motor_read_register(&slate.motors[i], CR1));
+		Control_Register_2_decoder(motor_read_register(&slate.motors[i], CR2A));
+		Control_Register_3_decoder(motor_read_register(&slate.motors[i], CR3));
+		Control_Register_4_decoder(motor_read_register(&slate.motors[i], CR4));
+		Control_Register_5_decoder(motor_read_register(&slate.motors[i], CR5));
+		Control_Register_6_decoder(motor_read_register(&slate.motors[i], CR6));
+		Control_Register_7_decoder(motor_read_register(&slate.motors[i], CR7));
+		Control_Register_8_decoder(motor_read_register(&slate.motors[i], CR8));
+		Control_Register_9_decoder(motor_read_register(&slate.motors[i], CR9));
+		Control_Register_10_decoder(motor_read_register(&slate.motors[i], CR10));
+		printf("\n");
 	}
-	IC_Status_Register_decoder(motor_read_register(&slate.motors[1], 0x0));
-	IC_Status_Register_decoder(motor_read_register(&slate.motors[2], 0x0));
-	IC_Status_Register_decoder(motor_read_register(&slate.motors[3], 0x0));
-	IC_Status_Register_decoder(motor_read_register(&slate.motors[0], 0x0));
-	Control_Register_1_decoder(motor_read_register(&slate.motors[1], 0x1));
+
 #ifdef TEST
     while (1)
     {
