@@ -45,7 +45,7 @@ void Status_Register_2_decoder(unsigned char byte) {
         {"Reserved", "Reserved"}
     };
 
-    printf("------------------Status Register 2 Decoder:\n");
+    printf("------------------Status Register 2 Decoder: 0x%02X\n", byte);
     // Iterate through each bit in the byte
     for (int i = 0; i < 8; i++) {
         int bitValue = (byte >> i) & 1; // Extract the value of the bit

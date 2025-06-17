@@ -46,7 +46,6 @@ void motor_reset_fault(motor_t* motor);
 uint8_t motor_read_register(motor_t* motor, uint8_t reg_addr);
 uint8_t motor_write_register(motor_t* motor, uint8_t reg_addr, uint8_t data);
 
-
 //decoders for registers in the MCT8316ZR
 void IC_Status_Register_decoder(uint8_t reg);
 void Status_Register_1_decoder(uint8_t reg);

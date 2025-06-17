@@ -29,10 +29,10 @@ int main()
 	//motor_enable(&slate.motors[m]);
 	
 	printf("Sleeping!\n");
-	sleep_ms(1000);
+	sleep_ms(10000);
 
 	//motor_set_speed(&slate.motors[3], 1<<12);
-	while (10
+	while (1)
 		{
 			// Decode the status registers
 		for (int i = 0; i < 4; i++) {
@@ -57,6 +57,7 @@ int main()
 	}
 
 
+	sleep_ms(10000);
 #ifdef TEST
     while (1)
     {

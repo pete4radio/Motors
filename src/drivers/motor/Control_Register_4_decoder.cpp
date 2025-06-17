@@ -42,7 +42,7 @@ void Control_Register_4_decoder(unsigned char byte) {
         {"Overcurrent causes a latched fault", "Overcurrent causes an automatic retrying fault", "Overcurrent is report only but no action is taken", "Overcurrent is not reported and no action is taken"} // OCP_MODE (1-0)
     };
 
-    printf("------------------Control Register 4 Decoder:\n");
+    printf("------------------Control Register 4 Decoder: 0x%02X\n", byte);
     // Interpret each bit or group of bits
     printf("Bit 7: %s - %s\n", fields[0], descriptions[0][(byte >> 7) & 0x01]); // DRV_OFF
     printf("Bit 6: %s - %s\n", fields[1], descriptions[1][(byte >> 6) & 0x01]); // OCP_CBC

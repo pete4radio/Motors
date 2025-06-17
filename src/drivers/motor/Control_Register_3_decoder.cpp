@@ -43,7 +43,7 @@ void Control_Register_3_decoder(unsigned char byte) {
         {"Over temperature reporting on nFAULT is disabled", "Over temperature reporting on nFAULT is enabled"} // OTW_REP (0)
     };
 
-        printf("------------------Control Register 3 Decoder:\n");
+        printf("------------------Control Register 3 Decoder: 0x%02X\n", byte);
     // Interpret each bit
     for (int i = 7; i >= 0; i--) {
         int bitValue = (byte >> i) & 1; // Extract the value of the bit

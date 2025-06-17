@@ -48,7 +48,7 @@ void Status_Register_1_decoder(unsigned char byte) {
         {"No overtemperature shutdown is detected", "Overtemperature shutdown is detected"},
         {"No overtemperature warning is detected", "Overtemperature warning is detected"}
     };
-    printf("------------------Status Register 1 Decoder:\n");
+    printf("------------------Status Register 1 Decoder: 0x%02X\n", byte);
     // Iterate through each bit in the byte
     for (int i = 0; i < 8; i++) {
         int bitValue = (byte >> i) & 1; // Extract the value of the bit
