@@ -53,6 +53,16 @@ uint8_t motor_enable(motor_t* motor){
 	gpio_put(motor->SLEEP_pin_, 0); // Put motor driver to sleep which resets registers.
 	sleep_ms(10);
 	gpio_put(motor->SLEEP_pin_, 1); // Wake up the motor driver
+	sleep_ms(10);
+	// Set the SDO_MODE to push-pull, as the CPU pullup is too weak to be certain
+	motor_write_register(motor, CR2A, 0b1 << 5); // Set SDO_MODE to push-pull
+	// check that it got set and we can read it back
+	if (motor_read_register(motor, CR2A) && 0b1 << 5) {
+		printf("Motor driver SDO_MODE set to push-pull.\n");
+	} else {
+		printf("Failed to set SDO_MODE to push-pull.\n");
+		return PICO_ERROR_GENERIC;
+	}
 
 	// See if the chip is responding on SPI
 	if(	uint8_t Register_5 = motor_read_register(motor, CR5) == 0x46){
