@@ -39,9 +39,9 @@ uint8_t report_motor_faults(slate_t* slate) {
         } else {
             printf("Motor %d Sleep pin is functioning normally.\n", i);
         }
-        // if BRAKE pin is asserted low, let's think of that as a software fault
-        if (gpio_get(slate->motors[i].BRAKE_pin_) != 1) {
-            printf("Motor %d Brake pin asserted low!\n", i);
+        // if BRAKE pin is asserted high, let's think of that as a software fault
+        if (gpio_get(slate->motors[i].BRAKE_pin_) != 0) {
+            printf("Motor %d Brake pin asserted high!\n", i);
             fault_count++;
         } else {
             printf("Motor %d Brake pin is functioning normally.\n", i);
@@ -72,7 +72,9 @@ void reset_motor_faults(slate_t* slate) {
         } else {
             printf("Motor %d has no faults to reset.\n", i);
         }
-        printf("Motor %d faults reset.\n", i);
+        printf("Motor %d faults reset.  Checking...\n", i);
+        sleep_ms(100); // Wait for reset to take effect
+        report_motor_faults(slate);
     }
 }   
 

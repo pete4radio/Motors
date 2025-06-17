@@ -58,6 +58,22 @@ uint8_t motor_enable(motor_t* motor){
 	//motor_write_register(motor, 0x4, 0x2);
 
 	pwm_set_enabled(motor->pwm_slice_, true);
+
+	// Set the DRVOFF pin to high
+	gpio_init(motor->DRVOFF_pin_); // Sets function SIO
+	gpio_set_dir(motor->DRVOFF_pin_, GPIO_OUT);		
+	gpio_pull_up(motor->DRVOFF_pin_);
+	gpio_put(motor->DRVOFF_pin_, 1);
+
+	// No Brake
+	gpio_init(motor->BRAKE_pin_); // Sets function SIO
+	gpio_set_dir(motor->BRAKE_pin_, GPIO_OUT);
+	gpio_pull_up(motor->BRAKE_pin_);
+	gpio_put(motor->BRAKE_pin_, 0);
+
+	//  reset faults
+	motor_reset_fault(motor);
+
 	return PICO_OK;
 }
 
