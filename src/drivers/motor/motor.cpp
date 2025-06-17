@@ -45,7 +45,7 @@ motor_t motor_init(int FAULT_pin,
 	return motor;
 }
 
-void motor_enable(motor_t* motor){
+uint8_t motor_enable(motor_t* motor){
 	// First take it out of sleep
 	gpio_init(motor->SLEEP_pin_); // Sets function SIO
 	gpio_set_dir(motor->SLEEP_pin_, GPIO_OUT);
@@ -58,16 +58,33 @@ void motor_enable(motor_t* motor){
 	//motor_write_register(motor, 0x4, 0x2);
 
 	pwm_set_enabled(motor->pwm_slice_, true);
+	return PICO_OK;
 }
 
-void motor_disable(motor_t* motor) {
+uint8_t motor_disable(motor_t* motor) {
 	pwm_set_enabled(motor->pwm_slice_, false);
 	gpio_put(motor->SLEEP_pin_, 0);
+	return PICO_OK;
 }
 
-void motor_set_speed(motor_t* motor, uint16_t speed) {
+uint8_t motor_set_speed(motor_t* motor, uint16_t speed) {
 	pwm_set_gpio_level(motor->PWM_pin_, speed);
 	pwm_set_enabled(motor->pwm_slice_, true);
+	return PICO_OK;
+}
+
+uint8_t motor_brake(motor_t* motor) {
+	// Set the PWM to 0 and enable the brake pin
+	pwm_set_gpio_level(motor->PWM_pin_, 0);
+	gpio_put(motor->BRAKE_pin_, 1);
+	return PICO_OK;
+}
+
+uint8_t motor_coast(motor_t* motor) {
+	// Set the PWM to 0 and disable the brake pin
+	pwm_set_gpio_level(motor->PWM_pin_, 0);
+	gpio_put(motor->BRAKE_pin_, 0);
+	return PICO_OK;
 }
 
 uint8_t motor_read_register(motor_t* motor, uint8_t reg_addr) {
@@ -133,8 +150,9 @@ uint8_t motor_write_register(motor_t* motor, uint8_t reg_addr, uint8_t data) {
     return rx_buf[0];  // Second byte contains the previous value
 }
 
-void motor_reset_fault(motor_t* motor) {
+uint8_t motor_reset_fault(motor_t* motor) {
     gpio_put(motor->SLEEP_pin_, 0);
 	sleep_us(30);
     gpio_put(motor->SLEEP_pin_, 1);
+	return PICO_OK;
 }

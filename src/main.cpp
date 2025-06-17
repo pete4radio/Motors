@@ -8,7 +8,7 @@
 #include "hardware/gpio.h"
 #include "hardware/clocks.h"
 
-#include "motor_test.h"
+#include "drivers/motor/motor_test.h"
 
 //Check the pin is compatible with the platform
 #if SAMWISE_WATCHDOG_FEED_PIN >= NUM_BANK0_GPIOS

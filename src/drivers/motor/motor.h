@@ -39,12 +39,15 @@ motor_t motor_init(int FAULT_pin,
 					int PWM_pin,
 					int FGOUT_pin);
 
-void motor_enable(motor_t* motor);
-void motor_disable(motor_t* motor);
-void motor_set_speed(motor_t* motor, uint16_t speed);
-void motor_reset_fault(motor_t* motor);
+uint8_t motor_enable(motor_t* motor);
+uint8_t motor_disable(motor_t* motor);
+uint8_t motor_set_speed(motor_t* motor, uint16_t speed);
+uint8_t motor_reset_fault(motor_t* motor);
 uint8_t motor_read_register(motor_t* motor, uint8_t reg_addr);
 uint8_t motor_write_register(motor_t* motor, uint8_t reg_addr, uint8_t data);
+
+uint8_t motor_brake(motor_t* motor);
+uint8_t motor_coast(motor_t* motor);
 
 //decoders for registers in the MCT8316ZR
 void IC_Status_Register_decoder(uint8_t reg);
