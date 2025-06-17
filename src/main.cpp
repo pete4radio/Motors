@@ -8,6 +8,8 @@
 #include "hardware/gpio.h"
 #include "hardware/clocks.h"
 
+#include "motor_test.h"
+
 //Check the pin is compatible with the platform
 #if SAMWISE_WATCHDOG_FEED_PIN >= NUM_BANK0_GPIOS
 #error "Recompile specifying the RP2350B platform SAMWISE"
@@ -30,25 +32,30 @@ int main()
 	sleep_ms(1000);
 
 	//motor_set_speed(&slate.motors[3], 1<<12);
-
-	// Decode the status registers
-	for (int i = 0; i < 4; i++) {
-		printf("Motor %d Registers:\n", i);
-		IC_Status_Register_decoder(motor_read_register(&slate.motors[i], ICR));
-		Status_Register_1_decoder(motor_read_register(&slate.motors[i], SR1));
-		Status_Register_2_decoder(motor_read_register(&slate.motors[i], SR2));
-		Control_Register_1_decoder(motor_read_register(&slate.motors[i], CR1));
-		Control_Register_2A_decoder(motor_read_register(&slate.motors[i], CR2A));
-		Control_Register_3_decoder(motor_read_register(&slate.motors[i], CR3));
-		Control_Register_4_decoder(motor_read_register(&slate.motors[i], CR4));
-		Control_Register_5_decoder(motor_read_register(&slate.motors[i], CR5));
-		Control_Register_6_decoder(motor_read_register(&slate.motors[i], CR6));
-		Control_Register_7_decoder(motor_read_register(&slate.motors[i], CR7));
-		Control_Register_8_decoder(motor_read_register(&slate.motors[i], CR8));
-		Control_Register_9_decoder(motor_read_register(&slate.motors[i], CR9));
-		Control_Register_10_decoder(motor_read_register(&slate.motors[i], CR10));
-		printf("\n");
+	while (10
+		{
+			// Decode the status registers
+		for (int i = 0; i < 4; i++) {
+			printf("Motor %d Registers:\n", i);
+			IC_Status_Register_decoder(motor_read_register(&slate.motors[i], ICR));
+			Status_Register_1_decoder(motor_read_register(&slate.motors[i], SR1));
+			Status_Register_2_decoder(motor_read_register(&slate.motors[i], SR2));
+			Control_Register_1_decoder(motor_read_register(&slate.motors[i], CR1));
+			Control_Register_2A_decoder(motor_read_register(&slate.motors[i], CR2A));
+			Control_Register_3_decoder(motor_read_register(&slate.motors[i], CR3));
+			Control_Register_4_decoder(motor_read_register(&slate.motors[i], CR4));
+			Control_Register_5_decoder(motor_read_register(&slate.motors[i], CR5));
+			Control_Register_6_decoder(motor_read_register(&slate.motors[i], CR6));
+			Control_Register_7_decoder(motor_read_register(&slate.motors[i], CR7));
+			Control_Register_8_decoder(motor_read_register(&slate.motors[i], CR8));
+			Control_Register_9_decoder(motor_read_register(&slate.motors[i], CR9));
+			Control_Register_10_decoder(motor_read_register(&slate.motors[i], CR10));
+			printf("\n");
+		}
+	
+		run_motor_tests(&slate);
 	}
+
 
 #ifdef TEST
     while (1)
