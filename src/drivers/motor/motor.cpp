@@ -46,12 +46,22 @@ motor_t motor_init(int FAULT_pin,
 }
 
 uint8_t motor_enable(motor_t* motor){
-	// First take it out of sleep
+	// Initialize registers by putting it into sleep
 	gpio_init(motor->SLEEP_pin_); // Sets function SIO
 	gpio_set_dir(motor->SLEEP_pin_, GPIO_OUT);
 	gpio_pull_up(motor->SLEEP_pin_);
-	gpio_put(motor->SLEEP_pin_, 1);
+	gpio_put(motor->SLEEP_pin_, 0); // Put motor driver to sleep which resets registers.
 	sleep_ms(10);
+	gpio_put(motor->SLEEP_pin_, 1); // Wake up the motor driver
+
+	// See if the chip is responding on SPI
+	if(	uint8_t Register_5 = motor_read_register(motor, CR5) == 0x46){
+		printf("Motor driver is responding on SPI.\n");
+	} else {
+		printf("Motor driver %d is not responding on SPI. Register 5: %x\n", motor, Register_5);
+		return PICO_ERROR_GENERIC;
+	}
+
 	// Unlock registers for writing
 	//motor_write_register(motor, 0x3, 0b011);
 
