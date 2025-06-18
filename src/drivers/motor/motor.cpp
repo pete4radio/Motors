@@ -46,6 +46,20 @@ motor_t motor_init(int FAULT_pin,
 }
 
 uint8_t motor_enable(motor_t* motor){
+	pwm_set_enabled(motor->pwm_slice_, true);
+
+	// Set the DRVOFF pin to high
+	gpio_init(motor->DRVOFF_pin_); // Sets function SIO
+	gpio_set_dir(motor->DRVOFF_pin_, GPIO_OUT);		
+	gpio_pull_up(motor->DRVOFF_pin_);
+	gpio_put(motor->DRVOFF_pin_, 1);
+
+	// No Brake
+	gpio_init(motor->BRAKE_pin_); // Sets function SIO
+	gpio_set_dir(motor->BRAKE_pin_, GPIO_OUT);
+	gpio_pull_up(motor->BRAKE_pin_);
+	gpio_put(motor->BRAKE_pin_, 0);
+	
 	// Initialize registers by putting it into sleep
 	gpio_init(motor->SLEEP_pin_); // Sets function SIO
 	gpio_set_dir(motor->SLEEP_pin_, GPIO_OUT);
@@ -54,6 +68,9 @@ uint8_t motor_enable(motor_t* motor){
 	sleep_ms(10);
 	gpio_put(motor->SLEEP_pin_, 1); // Wake up the motor driver
 	sleep_ms(10);
+	
+	// unlock registers for writing
+	motor_write_register(motor, CR1, 0b011); // Unlock registers for writing
 	// Set the SDO_MODE to push-pull, as the CPU pullup is too weak to be certain
 	motor_write_register(motor, CR2A, 0b1 << 5); // Set SDO_MODE to push-pull
 	// check that it got set and we can read it back

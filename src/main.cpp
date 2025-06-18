@@ -29,7 +29,7 @@ int main()
 	//motor_enable(&slate.motors[m]);
 	
 	printf("Sleeping!\n");
-	sleep_ms(10000);
+	sleep_ms(3000);
 
 	//motor_set_speed(&slate.motors[3], 1<<12);
 	while (1)
