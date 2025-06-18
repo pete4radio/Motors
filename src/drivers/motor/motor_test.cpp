@@ -5,14 +5,21 @@
 #include "hardware/gpio.h"
 #include "drivers/motor/motor.h"
 
-#define NUM_MOTORS 4 // Adjust as needed
-
+#define NUM_MOTORS 4 
 
 void enable_motors(slate_t* slate) {
-    for (uint8_t i = 0; i < NUM_MOTORS; ++i) {
-        motor_enable(&slate->motors[i]);
-        printf("Motor %d enabled.\n", i);
-    }
+    uint8_t nmotors = 0;
+    while (nmotors < NUM_MOTORS) {  // For testing, stop here if can't access motor chips
+        for (uint8_t i = 0; i < NUM_MOTORS; ++i) {
+            if (motor_enable(&slate->motors[i]) == PICO_OK) {
+                nmotors++;
+                printf("Motor %d enabled successfully.\n", i);
+            } else {
+                printf("Failed to enable motor %d.\n", i);
+            } 
+        }
+     sleep_ms(1000); // Wait a bit before trying again
+    }        
 }
 
 void disable_motors(slate_t* slate) {
