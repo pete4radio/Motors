@@ -62,9 +62,13 @@ static bool init_motors(slate_t *slate) {
 static bool init_spi(slate_t* slate) {
 	// SPI 1 MHz
 	spi_init(spi0, 1000 * 1000);
-// SPI is 16 bit, section 8.5.1.  MCT8316ZQ datasheet.  Also says to use CPOL=0, CPHA=1 and MSB first
-	spi_set_format(spi0, 16, SPI_CPOL_0, SPI_CPHA_1, SPI_MSB_FIRST);
+// SPI is 16 bit, section 8.5.1 in the MCT8316ZQ datasheet.  
+// This program always sends two 8 bit bytes and as a pair operate as a 16 bit transfer
+// Also says to use CPOL=0, CPHA=1 and MSB first
+	spi_set_format(spi0, 8, SPI_CPOL_0, SPI_CPHA_1, SPI_MSB_FIRST);
 
+//  Not using the spi engine's CS pin because we have 4 motor controllers
+//  and each needs their own CS pin
     gpio_set_function(ADCS_MOTOR_SDO, GPIO_FUNC_SPI);
     gpio_set_function(ADCS_MOTOR_SDI, GPIO_FUNC_SPI);
     gpio_set_function(ADCS_MOTOR_SCLK, GPIO_FUNC_SPI);
